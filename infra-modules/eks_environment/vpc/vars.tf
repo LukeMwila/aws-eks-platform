@@ -3,16 +3,6 @@ variable "vpc_tag_name" {
   description = "Name tag for the VPC"
 }
 
-variable "private_subnet_tag_name" {
-  type        = string
-  description = "Name tag for the private subnet"
-}
-
-variable "public_subnet_tag_name" {
-  type        = string
-  description = "Name tag for the private subnet"
-}
-
 variable "route_table_tag_name" {
   type        = string
   default     = "main"
@@ -31,13 +21,24 @@ variable "private_subnet_cidr_block" {
   description = "CIDR block range for the private subnet"
 }
 
-variable "public_subnet_cidr_block" {
-  type        = string
-  default     = "10.0.1.0/24"
+variable "public_subnet_cidr_blocks" {
+  type = list(string)
+  default     = ["10.0.1.0/24", "10.0.2.0/24"]
   description = "CIDR block range for the public subnet"
 }
 
 variable "environment" {
   type        = string
   description = "Application enviroment"
+}
+
+variable "eks_cluster_name" {
+  description = "The name of the EKS cluster"
+  type = string
+}
+
+variable "availability_zones" {
+  type  = list(string)
+  default = ["eu-west-1b", "eu-west-1c"]
+  description = "List of availability zones for the selected region"
 }
