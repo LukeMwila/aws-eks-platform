@@ -32,3 +32,8 @@ variable "eks_cluster_subnets" {
   description = "List of VPC subnets associated with EKS Cluster"
   type = list(string)
 }
+
+variable "main_pvt_route_table_id" {
+  description = "Main Rroute table id for VPC with EKS cluster"
+  type = string
+}

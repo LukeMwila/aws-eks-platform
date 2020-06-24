@@ -42,3 +42,13 @@ variable "availability_zones" {
   default = ["eu-west-1b", "eu-west-1c"]
   description = "List of availability zones for the selected region"
 }
+
+variable "main_pvt_route_table_id" {
+  description = "Main Rroute table id for VPC with EKS cluster"
+  type = string
+}
+
+variable "region" {
+  description = "aws region to deploy to"
+  type        = string
+}

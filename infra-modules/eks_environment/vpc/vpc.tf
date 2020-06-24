@@ -36,7 +36,7 @@ resource "aws_subnet" "public_subnet" {
     "kubernetes.io/role/elb" = 1
   }
 
-  # map_public_ip_on_launch = true
+  map_public_ip_on_launch = true
 }
 
 # Create IGW for the public subnets
