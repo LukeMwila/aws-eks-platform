@@ -10,7 +10,7 @@ resource "aws_security_group_rule" "endpoint_ec2_443" {
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"
-  cidr_blocks = [var.private_subnet_cidr_block]
+  cidr_blocks = flatten([[var.private_subnet_cidr_block], var.public_subnet_cidr_blocks])
 }
 
 # ECR VPC Endpoint security groups
@@ -25,5 +25,5 @@ resource "aws_security_group_rule" "endpoint_ecr_443" {
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"
-  cidr_blocks = [var.private_subnet_cidr_block]
+  cidr_blocks = flatten([[var.private_subnet_cidr_block], var.public_subnet_cidr_blocks])
 }

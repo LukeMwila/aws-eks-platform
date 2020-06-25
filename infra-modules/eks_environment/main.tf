@@ -23,5 +23,6 @@ module "eks_cluster_and_worker_nodes" {
   # Node group
   node_group_name = "${var.eks_cluster_name}-node-group"
   private_subnet_ids = [module.vpc_for_eks.private_subnet_id]
+  public_subnet_ids = module.vpc_for_eks.public_subnet_ids
   environment = var.environment
 }

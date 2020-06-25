@@ -35,6 +35,11 @@ variable "private_subnet_ids" {
   description = "List of private subnet IDs."
 }
 
+variable "public_subnet_ids" {
+  type = list(string)
+  description = "List of public subnet IDs."
+}
+
 variable "ami_type" {
   description = "Type of Amazon Machine Image (AMI) associated with the EKS Node Group. Defaults to AL2_x86_64. Valid values: AL2_x86_64, AL2_x86_64_GPU."
   type = string 

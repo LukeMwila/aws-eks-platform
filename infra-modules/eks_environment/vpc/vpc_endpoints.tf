@@ -4,7 +4,7 @@ resource "aws_vpc_endpoint" "ecr_dkr" {
   service_name = "com.amazonaws.${var.region}.ecr.dkr"
   vpc_endpoint_type = "Interface"
   private_dns_enabled = true
-  subnet_ids          = ["${aws_subnet.private_subnet.id}"]
+  subnet_ids          = flatten([["${aws_subnet.private_subnet.id}"], aws_subnet.public_subnet.*.id])
 
   security_group_ids = [aws_security_group.endpoint_ecr.id]
 
@@ -19,7 +19,7 @@ resource "aws_vpc_endpoint" "ecr_api" {
   service_name = "com.amazonaws.${var.region}.ecr.api"
   vpc_endpoint_type = "Interface"
   private_dns_enabled = true
-  subnet_ids          = ["${aws_subnet.private_subnet.id}"]
+  subnet_ids          = flatten([["${aws_subnet.private_subnet.id}"], aws_subnet.public_subnet.*.id])
 
   security_group_ids = [aws_security_group.endpoint_ecr.id]
 
@@ -35,7 +35,7 @@ resource "aws_vpc_endpoint" "ec2" {
   service_name = "com.amazonaws.${var.region}.ec2"
   vpc_endpoint_type = "Interface"
   private_dns_enabled = true
-  subnet_ids          = ["${aws_subnet.private_subnet.id}"]
+  subnet_ids          = flatten([["${aws_subnet.private_subnet.id}"], aws_subnet.public_subnet.*.id])
 
   security_group_ids = [aws_security_group.endpoint_ec2.id]
 

@@ -16,3 +16,9 @@ resource "aws_eks_cluster" "main" {
     "aws_iam_role_policy_attachment.aws_eks_service_policy"
   ]
 }
+
+resource "aws_iam_openid_connect_provider" "main" {
+  client_id_list  = ["sts.amazonaws.com"]
+  thumbprint_list = []
+  url             = "${aws_eks_cluster.main.identity.0.oidc.0.issuer}"
+}
