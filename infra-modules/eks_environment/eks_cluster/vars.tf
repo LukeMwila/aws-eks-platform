@@ -58,20 +58,38 @@ variable "instance_types" {
   description = "Set of instance types associated with the EKS Node Group."
 }
 
-variable "desired_size" {
-  description = "Desired number of worker nodes"
+variable "pvt_desired_size" {
+  description = "Desired number of worker nodes in private subnet"
   default = 1
   type = number
 }
 
-variable "max_size" {
-  description = "Maximum number of worker nodes."
+variable "pvt_max_size" {
+  description = "Maximum number of worker nodes in private subnet."
   default = 1
   type = number
 }
 
-variable "min_size" {
-  description = "Minimum number of worker nodes."
+variable "pvt_min_size" {
+  description = "Minimum number of worker nodes in private subnet."
+  default = 1
+  type = number
+}
+
+variable "pblc_desired_size" {
+  description = "Desired number of worker nodes in public subnet"
+  default = 1
+  type = number
+}
+
+variable "pblc_max_size" {
+  description = "Maximum number of worker nodes in public subnet."
+  default = 1
+  type = number
+}
+
+variable "pblc_min_size" {
+  description = "Minimum number of worker nodes in public subnet."
   default = 1
   type = number
 }

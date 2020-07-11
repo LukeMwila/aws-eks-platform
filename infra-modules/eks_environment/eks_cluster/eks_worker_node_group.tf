@@ -10,9 +10,9 @@ resource "aws_eks_node_group" "main" {
   instance_types = var.instance_types
 
   scaling_config {
-    desired_size = var.desired_size
-    max_size     = var.max_size
-    min_size     = var.min_size
+    desired_size = var.pvt_desired_size
+    max_size     = var.pvt_max_size
+    min_size     = var.pvt_min_size
   }
 
   tags = {
@@ -40,9 +40,9 @@ resource "aws_eks_node_group" "public" {
   instance_types = var.instance_types
 
   scaling_config {
-    desired_size = var.desired_size
-    max_size     = var.max_size
-    min_size     = var.min_size
+    desired_size = var.pblc_desired_size
+    max_size     = var.pblc_max_size
+    min_size     = var.pblc_min_size
   }
 
   tags = {
